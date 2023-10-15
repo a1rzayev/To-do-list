@@ -1,8 +1,9 @@
 import { Task } from "./task";
 
 class TaskList{
+    #tasks;
     constructor(){
-        this.tasks = []
+        this.#tasks = []
     }
     addTask(mytask){
         this.tasks.push(mytask);

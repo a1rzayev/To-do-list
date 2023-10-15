@@ -1,17 +1,22 @@
 export class Task{
+    #id;
+    #name;
+    #description;
+    #datecreated;
+    #completed;
     constructor(name, description){
-        this.name = name;
-        this.description = description;
-        this.datecreated = new Date();
-        this.completed = false;
+        this.#name = name;
+        this.#description = description;
+        this.#datecreated = new Date();
+        this.#completed = false;
     }
     editDescription(description){
-        this.description = description;
+        this.#description = description;
     }
     editName(name){
-        this.name = name;
+        this.#name = name;
     }
     editIsdone(){
-        this.completed = !this.completed;
+        this.#completed = !this.completed;
     }
 }
