@@ -1,23 +1,23 @@
-import { Task } from "./task";
+import { Task } from "./task.js";
 
-class TaskList{
+export class TaskList{
     #tasks;
     constructor(){
-        this.#tasks = []
+        this.#tasks = new Map();
     }
     addTask(mytask){
-        this.tasks.push(mytask);
+        this.#tasks.set(mytask.getId());
     }
     deleteTask(mytask){
-        this.tasks = this.tasks.filter(task => task !== mytask);
+        this.#tasks.delete(mytask.getId());
     }
     getTasks(){
-        return this.tasks;
+        return this.#tasks;
     }
     getCompletedTasks(){
-        return this.tasks.filter(task => task.completed);
+        return this.#tasks.filter(task => task.completed);
     }
     getUncompletedTasks(){
-        return this.tasks.filter(task => !task.completed);
+        return this.#tasks.filter(task => !task.completed);
     }
 }
