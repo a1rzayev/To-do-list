@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit</title>
     <link rel="stylesheet" href="../index.css">
+    <script defer src="../js/edit.js"></script>
 </head>
 <body>
-
-    <form id="edit-task-form">
-        <input type="text" name="edit-task-name" id="edit-task-name" placeholder="Name">
-        <input type="text" name="edit-task-description" id="edit-task-description" placeholder="Description">
-        <input type="checkbox">
-        <button id="editbutton">Edit</button>
-    </form>
+    <header>
+        <h1>To-do list</h1>
+    </header>
+    <main>
+        <form id="edit-task-form">
+            <label>Name:</label>
+            <input type="text" name="edit-task-name" id="edit-task-name" placeholder="Name" value=""><br>
+            <label>Description:</label>
+            <input type="text" name="edit-task-description" id="edit-task-description" placeholder="Description"><br>
+            <label>Done:</label>
+            <input type="checkbox"><br>
+            <button id="editbutton">Edit</button><br>
+        </form>
+    </main>
         
 </body>
 </html>
