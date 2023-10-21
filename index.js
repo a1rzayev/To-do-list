@@ -3,36 +3,49 @@ import { TaskList } from "./js/tasklist.js";
 import { LAST_ID } from "./js/globals.js";
 import { TASKS } from "./js/globals.js";
 
-if(localStorage.getItem(LAST_ID) === null)
-    localStorage.setItem(LAST_ID, '1');
-
-let lastid = parseInt(localStorage.getItem(LAST_ID));
-
 const form = document.querySelector("#new-task-form");
 const name = document.querySelector("#new-task-name");
 const description = document.querySelector("#new-task-description");
 const list = document.querySelector("#tasks");
 const addbutton = document.querySelector("#addbutton");
 
+// window.addEventListener('load', (event) =>{
+if(localStorage.getItem(LAST_ID) === null)
+    localStorage.setItem(LAST_ID, '0');
+   
+let lastid = parseInt(localStorage.getItem(LAST_ID));
+
 let tasklist = new TaskList();
 
-function fillList(id){
+if(lastid !== 0){
+    tasklist.getList();
+    const elements = tasklist.getTasks;
+    elements.forEach(e=> {
+        fillList(e.getId, e.getName);
+    });
+}
+// })
+
+function fillList(id, name){
 
     const taskdiv = document.createElement('div');
-    taskdiv.textContent = name.value;
+    taskdiv.textContent = name
 
-    const editbutton = document.createElement('a');
-    editbutton.textContent = 'Edit';
-    editbutton.href = `./html/edit.html?id=${id}`;
-    editbutton.addEventListener('click', editTask);
+    const edita = document.createElement('a');
+    const editbutton = document.createElement('button');
+    edita.textContent = 'Edit';
+    edita.href = `./html/edit.html?id=${id}`;
 
-    const observebutton = document.createElement('a');
-    observebutton.textContent = 'Observe';
-    observebutton.href = `./html/observe.html?id=${id}`;
+    const observea = document.createElement('a');
+    const observebutton = document.createElement('button');
+    observea.textContent = 'Observe';
+    observea.href = `./html/observe.html?id=${id}`;
 
     const deletebutton = document.createElement('a');
     deletebutton.textContent = 'Delete';
 
+    editbutton.appendChild(edita);
+    observebutton.appendChild(observea);
     taskdiv.appendChild(editbutton);
     taskdiv.appendChild(observebutton);
     taskdiv.appendChild(deletebutton);
@@ -40,14 +53,6 @@ function fillList(id){
     list.appendChild(taskdiv)
 }
 
-if(lastid !== 1){
-    tasklist.setTasks(JSON.parse(localStorage.getItem(TASKS)));
-    let elements = new Map();
-    elements = tasklist.getTasks();
-    // elements.forEach(element => {
-    //     fillList(element.key);
-    // });
-}
 
 addbutton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -55,38 +60,32 @@ addbutton.addEventListener('click', (event) => {
         window.alert("Write value in all fields");
         return false;
     }
+    lastid = lastid + 1;
 
     const newtask = new Task(name.value, description.value, lastid);
-    tasklist.addTask(newtask);
-    localStorage.setItem(TASKS, JSON.stringify(tasklist.getTasks()));
 
-    lastid = lastid + 1;
+    tasklist.addTask(newtask);
+
+    tasklist.setList();
+
     localStorage.setItem(LAST_ID, `${lastid}`);
 
-    fillList(lastid);
+    fillList(lastid, name.value);
 
     name.value = "";
     description.value = "";
 
     console.log(newtask);
-    console.log(tasklist)
+    console.log(tasklist);
 });
-
-function editTask(id){
-    // if(localStorage.getItem(id) === null){
-    //     window.alert("Error in task. Uncompleted!");
-    //     return false;
-    // }
-    openEditWindow();
-}
 function deleteTask(task){
     tasklist.deleteTask(task);
 }
 
-function openEditWindow(){
-    const editwindow = window.open('', '_blank', 'width=400px,height=400px');
+function sortByDate(){
+
 }
 
-function openObserveWindow(){
-    const observewindow = window.open('', '_blank', 'width=400px,height=400px');
+function sortByName(){
+
 }

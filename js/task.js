@@ -7,33 +7,48 @@ export class Task{
     constructor(name, description, id){
         this.#name = name;
         this.#description = description;
-        let date = new Date();
-        this.#datecreated = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
+        this.#datecreated = new Date().getMilliseconds();
         this.#iscompleted = false;
         this.#id = id;
     }
-    editDescription(description){
+    set setDescription(description){
         this.#description = description;
     }
-    editName(name){
+    set setName(name){
         this.#name = name;
     }
-    editIsdone(){
+    changeCompleted(){
         this.#iscompleted = !this.iscompleted;
     }
-    getId(){
+    set setCompleted(iscompleted){
+        this.#iscompleted = iscompleted;
+    }
+    set setDateCreated(datecreated){
+        this.#datecreated = datecreated;
+    }
+    get getId(){
         return this.#id;
     }
-    getName(){
+    get getName(){
         return this.#name;
     }
-    getDescription(){
+    get getDescription(){
         return this.#description;
     }
-    getIsCompleted(){
+    get getCompleted(){
         return this.#iscompleted;
     }
-    getDateCreated(){
+    get getDateCreated(){
+        // return this.#datecreated.getDay() + "/" + this.#datecreated.getMonth() + "/" + this.#datecreated.getFullYear();
         return this.#datecreated;
+    }
+    toPublicObject(){
+        return{
+            id: this.#id,
+            name: this.#name,
+            description: this.#description,
+            datecreated: this.#datecreated,
+            iscompleted: this.#iscompleted
+        }
     }
 }
