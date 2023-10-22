@@ -1,5 +1,4 @@
 *{
-    margin: 0 auto;
     padding: 0;
 	box-sizing: border-box;
 	
@@ -9,13 +8,16 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	color: #FFF;
+	min-width: 800px;
 	background-color: #374151;
+	display: flex;
+	align-content: center;
 }
 
 header {
 	padding: 2rem 1rem;
-	max-width: 800px;
 	width: 100%;
+	min-width: 800px;
 	margin: 0 auto;
 }
 

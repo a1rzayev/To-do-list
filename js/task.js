@@ -7,7 +7,7 @@ export class Task{
     constructor(name, description, id){
         this.#name = name;
         this.#description = description;
-        this.#datecreated = new Date().getMilliseconds();
+        this.#datecreated = Date.now()
         this.#iscompleted = false;
         this.#id = id;
     }

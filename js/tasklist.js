@@ -10,13 +10,13 @@ export class TaskList{
         this.#tasks.push(mytask);
     }
     deleteTask(mytask){
-        this.#tasks.pop(mytask);
-    }
-    get getTasks(){
-        return this.#tasks;
+        this.#tasks.splice(this.#tasks.indexOf(mytask), 1);
     }
     set setTasks(tasks){
         this.#tasks = tasks;
+    }
+    get getTasks(){
+        return this.#tasks;
     }
     get getCompletedTasks(){
         return this.#tasks.filter(task => task.completed);

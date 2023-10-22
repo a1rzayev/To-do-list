@@ -21,6 +21,28 @@
     <main>
         <section class="task-list">
             <h2>Tasks</h2>
+            <select name="sortselect" id="sort-select">
+                <option id="nosort" value="nosort">
+                    No sort
+                </option>
+                <option id="namesort" value="namesort">
+                    Sort by name
+                </option>
+                <option id="datesort" value="datesort">
+                    Sort by date
+                </option>
+            </select>
+            <select name="filterselect" id="filter-select">
+                <option id="all" value="all">
+                    All
+                </option>
+                <option id="completed" value="completed">
+                    Completed
+                </option>
+                <option id="uncompleted" value="uncompleted">
+                    Uncompleted
+                </option>
+            </select>
             <div id="tasks">
 
             </div>
