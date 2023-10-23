@@ -39,6 +39,7 @@ function fillList(task){
     taskdiv.id = task.getId;
 
     const observea = document.createElement('a');
+    observea.style.minWidth = "500px";
     observea.textContent = task.getName;
     observea.href = `./html/observe.html?id=${task.getId}`;
 
@@ -134,5 +135,4 @@ function sortAndFilter() {
 
     list.innerHTML = "";
     uploadList(filteredTasks);
-
 }

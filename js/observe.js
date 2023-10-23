@@ -31,14 +31,14 @@ if(!isConsist){
     elementsdiv.appendChild(error);
 }
 else{
-    name.textContent = task.getName;
-    description.textContent = task.getDescription;
+    name.textContent += task.getName;
+    description.textContent += task.getDescription;
     if(task.getCompleted){
-        completed.textContent = "Yes";
+        completed.textContent += "Yes";
     }
     else{
-        completed.textContent = "No";
+        completed.textContent += "No";
     }
-    datecreated.textContent = task.getStringDate;
+    datecreated.textContent += task.getStringDate;
     console.log(task.getStringDate);
-}
+} 
