@@ -81,26 +81,32 @@ function fillList(task){
 
 addbutton.addEventListener('click', (event) => {
     event.preventDefault();
-    if(name.value === "" || description.value === ""){
-        window.alert("Write value in all fields");
+
+    const nameRegex = /^[a-zA-Zа-яА-Я0-9\s]{1,16}(?!\d+$)(?:\S+\s?){2,}$/;
+    const descriptionRegex = /\b\w+\b\s+\b\w+\b/;
+
+    if (nameRegex.test(name.value) && descriptionRegex.test(description.value)) {
+        lastid = lastid + 1;
+    
+        const newtask = new Task(name.value, description.value, lastid);
+    
+        tasklist.addTask(newtask);
+    
+        tasklist.setList();
+    
+        localStorage.setItem(LAST_ID, `${lastid}`);
+    
+        fillList(newtask);
+    
+        name.value = "";
+        description.value = "";
+    
+        sortAndFilter();
+    }
+    else{
+        window.alert("Wrong input!");
         return false;
     }
-    lastid = lastid + 1;
-
-    const newtask = new Task(name.value, description.value, lastid);
-
-    tasklist.addTask(newtask);
-
-    tasklist.setList();
-
-    localStorage.setItem(LAST_ID, `${lastid}`);
-
-    fillList(newtask);
-
-    name.value = "";
-    description.value = "";
-
-    sortAndFilter();
 });
 
 filterselect.addEventListener("change",sortAndFilter);

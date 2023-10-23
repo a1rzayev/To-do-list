@@ -38,16 +38,30 @@ else{
     completed.checked = task.getCompleted;
 
     editbutton.addEventListener('click', () => {
-        if(name.value === "" || description.value === ""){
-            window.alert("Write value in all fields");
+        // if(name.value === "" || description.value === ""){
+        //     window.alert("Write value in all fields");
+        //     return false;
+        // }
+
+        // tasks[indexoftask].setName = name.value;
+        // tasks[indexoftask].setDescription = description.value;
+        // tasks[indexoftask].setCompleted = completed.checked;
+
+        // tasklist.setTasks = tasks;
+        // tasklist.setList();
+        const nameRegex = /^[a-zA-Zа-яА-Я0-9\s]{1,16}(?!\d+$)(?:\S+\s?){2,}$/;
+        const descriptionRegex = /\b\w+\b\s+\b\w+\b/;
+
+        if (nameRegex.test(name.value) && descriptionRegex.test(description.value)) {
+            tasks[indexoftask].setName = name.value;
+            tasks[indexoftask].setDescription = description.value;
+            tasks[indexoftask].setCompleted = completed.checked;
+
+            tasklist.setTasks = tasks;
+            tasklist.setList();
+        } else {
+            window.alert("Wrong input!");
             return false;
         }
-
-        tasks[indexoftask].setName = name.value;
-        tasks[indexoftask].setDescription = description.value;
-        tasks[indexoftask].setCompleted = completed.checked;
-
-        tasklist.setTasks = tasks;
-        tasklist.setList();
     });
 }
