@@ -11,8 +11,9 @@ const addbutton = document.querySelector("#addbutton");
 const sortselect = document.querySelector("#sort-select");
 const filterselect = document.querySelector("#filter-select");
 
-if(localStorage.getItem(LAST_ID) === null)
+if(localStorage.getItem(LAST_ID) === null){
     localStorage.setItem(LAST_ID, '0');
+}
    
 let lastid = parseInt(localStorage.getItem(LAST_ID));
 
@@ -25,18 +26,17 @@ function uploadList(list){
     });
 }
 
-
 if(lastid !== 0){
     tasklist.getList();
     uploadList(tasklist.getTasks);
 }
+
 const showlist = tasklist.getTasks;
 
 function fillList(task){
 
     const taskdiv = document.createElement('div');
     taskdiv.id = task.getId;
-    taskdiv.style.backgroundColor = "#ff0000";
 
     const observea = document.createElement('a');
     observea.textContent = task.getName;
@@ -53,10 +53,8 @@ function fillList(task){
         tasklist.deleteTask(task);
         tasklist.setList();
         const element = document.getElementById(`${task.getId}`);
-        //uploadList();
-        // list.remove(`#${task.getId}`);
         element.remove();
-        updateFilteredAndSortedTasks();
+        sortAndFilter();
     })
 
     const completedcheckbox = document.createElement('input');
@@ -68,7 +66,7 @@ function fillList(task){
         arr[arr.indexOf(task)] = task;
         tasklist.setTasks = arr;
         tasklist.setList();
-        updateFilteredAndSortedTasks();
+        sortAndFilter();
     });
 
     editbutton.appendChild(edita);
@@ -101,42 +99,24 @@ addbutton.addEventListener('click', (event) => {
     name.value = "";
     description.value = "";
 
-    updateFilteredAndSortedTasks();
+    sortAndFilter();
 });
 
-// sortselect.addEventListener('change', () => {
-    // var options = sortselect.querySelectorAll('option');
-    // if(sortselect.value == "nosort"){
-    //     addActivityItem();
-    // }
-    // else if(sortselect.value == "namesort"){
-    //     list.replaceChild();
-    //     showlist = sortByDate();
-    //     for (let i = 0; i < array.length; ++i) {
-    //         fillList(showlist[i]);
-    //     }
-    // }
-    // else if(sortselect.value == "datesort"){
+filterselect.addEventListener("change",sortAndFilter)
 
-    // }
-// })
+sortselect.addEventListener("change",sortAndFilter)
 
-filterselect.addEventListener("change",updateFilteredAndSortedTasks)
-
-sortselect.addEventListener("change",updateFilteredAndSortedTasks)
-
-// function deleteTask(task){
-//     tasklist.deleteTask(task);
-//     tasklist.setList();
-// }
-
-function updateFilteredAndSortedTasks() {
+function sortAndFilter() {
     const filterValue = filterselect.value;
     const sortValue = sortselect.value;
 
     let sortedTasks = tasklist.getTasks;
 
-    if (sortValue === "datesort") {
+    if (sortValue === "nosort") {
+        sortedTasks.sort((a, b) => b.getDateCreated - a.getDateCreated);
+        sortedTasks = sortedTasks.reverse();
+    } 
+    else if (sortValue === "datesort") {
         sortedTasks.sort((a, b) => b.getDateCreated - a.getDateCreated);
     } 
     else if (sortValue === "namesort") {
@@ -156,11 +136,3 @@ function updateFilteredAndSortedTasks() {
     uploadList(filteredTasks);
 
 }
-
-// function sortByDate(){
-//     return showlist.sort();
-// }
-
-// function sortByName(){
-//     return showlist.sort();
-// }

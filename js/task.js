@@ -42,6 +42,10 @@ export class Task{
         // return this.#datecreated.getDay() + "/" + this.#datecreated.getMonth() + "/" + this.#datecreated.getFullYear();
         return this.#datecreated;
     }
+    get getStringDate(){
+        const date = new Date(this.#datecreated);
+        return date.toLocaleString('en-GB');
+    }
     toPublicObject(){
         return{
             id: this.#id,

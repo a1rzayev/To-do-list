@@ -1,24 +1,29 @@
 *{
     padding: 0;
-	box-sizing: border-box;
-	
 }
 body {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	color: #FFF;
+	color: #ffffff;
 	min-width: 800px;
 	background-color: #374151;
-	display: flex;
-	align-content: center;
 }
 
-header {
-	padding: 2rem 1rem;
-	width: 100%;
-	min-width: 800px;
+a{
+    text-decoration: none;
+	color: #000000;
+}
+
+body, #tasks, #tasks > div{
+	width: 800px;
 	margin: 0 auto;
+}
+#tasks{
+	border: 1px solid #ffffff;
+}
+#tasks > div{
+	padding: 5px;
+	border: 1px solid #aaaaaa;
+	background-color: #0077ff;
+	justify-content: space-between;
 }
 
 header h1{ 

@@ -9,7 +9,7 @@ const elementsdiv = document.querySelector("#observe-task-div") ;
 const name = document.querySelector("#observe-task-name");
 const description = document.querySelector("#observe-task-description");
 const completed = document.querySelector("#observe-completed");
-const datecreated = document.querySelector("#cobserve-date-created")
+const datecreated = document.querySelector("#observe-date-created")
 
 let tasklist = new TaskList();
 tasklist.getList();
@@ -33,11 +33,12 @@ if(!isConsist){
 else{
     name.textContent = task.getName;
     description.textContent = task.getDescription;
-    if(getCompleted){
+    if(task.getCompleted){
         completed.textContent = "Yes";
     }
     else{
         completed.textContent = "No";
     }
-    datecreated.value = task.getDateCreated;
+    datecreated.textContent = task.getStringDate;
+    console.log(task.getStringDate);
 }
