@@ -13,9 +13,11 @@
     <header>
         <h1>To-do list</h1>
         <form id="new-task-form">
-            <input type="text" name="new-task-name" id="new-task-name" placeholder="Name"><br>
-            <input type="text" name="new-task-description" id="new-task-description" placeholder="Description"><br>
-            <button id="addbutton">Add</button>
+            <div class="inp-but-div">
+                <input type="text" name="new-task-name" id="new-task-name" maxlength="16" placeholder="Name"><br>
+                <button id="addbutton">Add</button>
+            </div>
+            <textarea type="text" name="new-task-description" id="new-task-description" placeholder="Description"></textarea>
         </form>
             
     </header>

@@ -1,4 +1,3 @@
-
 body {
 	color: #ffffff;
 	min-width: 600px;
@@ -9,11 +8,9 @@ a{
     text-decoration: none;
 	color: #000000;
 }
-#new-task-description{
-	height:200px;
-}
-#tasks > div > *{
-	margin-left: auto;
+
+#tasks > div > button, #tasks > div > input[type="checkbox"]{
+	float: right;
 }
 
 body, #tasks, #tasks > div{
@@ -24,7 +21,6 @@ body, #tasks, #tasks > div{
 	padding: 5px;
 	border: 3px solid #aaaaaa;
 	background-color: #0077ff;
-	justify-content: space-between;
 }
 
 header h1{
@@ -38,3 +34,30 @@ header{
 	width: 600px;
 }
 
+.inp-but-div{
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+}
+
+#new-task-form{
+	min-width: 600px;
+	min-height: 120px;
+	display: flex;
+	flex-direction: row;
+	flex: 1 4;
+}
+
+#new-task-description{
+	resize: none;
+	min-height: 120px;
+	min-width: 408px;
+}
+
+#addbutton{
+	min-height: 60px;
+}
+
+#new-task-name{
+	min-height: 60px;
+}

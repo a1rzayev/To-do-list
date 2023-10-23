@@ -38,6 +38,11 @@ else{
     completed.checked = task.getCompleted;
 
     editbutton.addEventListener('click', () => {
+        if(name.value === "" || description.value === ""){
+            window.alert("Write value in all fields");
+            return false;
+        }
+
         tasks[indexoftask].setName = name.value;
         tasks[indexoftask].setDescription = description.value;
         tasks[indexoftask].setCompleted = completed.checked;

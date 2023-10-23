@@ -72,8 +72,8 @@ function fillList(task){
 
     editbutton.appendChild(edita);
     taskdiv.appendChild(observea);
-    taskdiv.appendChild(editbutton);
     taskdiv.appendChild(deletebutton);
+    taskdiv.appendChild(editbutton);
     taskdiv.appendChild(completedcheckbox);
 
     list.appendChild(taskdiv)
@@ -103,9 +103,9 @@ addbutton.addEventListener('click', (event) => {
     sortAndFilter();
 });
 
-filterselect.addEventListener("change",sortAndFilter)
+filterselect.addEventListener("change",sortAndFilter);
 
-sortselect.addEventListener("change",sortAndFilter)
+sortselect.addEventListener("change",sortAndFilter);
 
 function sortAndFilter() {
     const filterValue = filterselect.value;
